@@ -5,6 +5,34 @@ import (
 	"testing"
 )
 
+func Test_SetResult_WalkArray_WWLWRWW_Should_Be_X_Minus1_Y_4(t *testing.T) {
+	expectedX := -1
+	expectedY := 4
+
+	actualX, actualY := robotwalk.SetResult("WWLWRWW")
+
+	if expectedX != actualX {
+		t.Errorf("Expect X %v but got %v", expectedX, actualX)
+	}
+	if expectedY != actualY {
+		t.Errorf("Expect Y %v but got %v", expectedY, actualY)
+	}
+}
+
+func Test_SetResult_WalkArray_LWWWWLW_Should_Be_X_Minus4_Y_Minus1(t *testing.T) {
+	expectedX := -4
+	expectedY := -1
+
+	actualX, actualY := robotwalk.SetResult("LWWWWLW")
+
+	if expectedX != actualX {
+		t.Errorf("Expect X %v but got %v", expectedX, actualX)
+	}
+	if expectedY != actualY {
+		t.Errorf("Expect Y %v but got %v", expectedY, actualY)
+	}
+}
+
 func Test_CalculateNextPosition_X_0_Y_0_Position_North_Walk_W_Should_Be_X_0_Y_1_Position_North(t *testing.T) {
 	x := 0
 	y := 0
@@ -209,5 +237,33 @@ func Test_CalculateNextPosition_X_Minus4_Y_0_Position_West_Walk_W_Should_Be_X_Mi
 	}
 	if expectedPosition != actualPosition {
 		t.Errorf("Expect Position %v but got %v", expectedPosition, actualPosition)
+	}
+}
+
+func Test_SetRobotWalk_X_1_Y_1_Should_be_Table00_0(t *testing.T) {
+	x := 1
+	y := 1
+
+	expected := "0"
+
+	robotwalk.SetPositionRobotWalk(x, y)
+	actual := robotwalk.Table[1][1]
+
+	if expected != actual {
+		t.Errorf("Expect X %v but got %v", expected, actual)
+	}
+}
+
+func Test_SetRobotWalk_X_1_Y_1_Should_be_Table01_null(t *testing.T) {
+	x := 1
+	y := 1
+
+	expected := ""
+
+	robotwalk.SetPositionRobotWalk(x, y)
+	actual := robotwalk.Table[0][1]
+
+	if expected != actual {
+		t.Errorf("Expect X %v but got %v", expected, actual)
 	}
 }
