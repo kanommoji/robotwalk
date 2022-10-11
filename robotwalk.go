@@ -1,31 +1,35 @@
 package robotwalk
 
+var North = 0
+var East = 1
+var South = 2
+var West = 3
+
 func CalculateNextPosition(x int, y int, position int, walk string) (int, int, int) {
 	if walk != "W" {
 		if walk == "L" {
-			if position == 0 {
-				position = 3
+			if position == North {
+				position = West
 			} else {
 				position--
 			}
 		} else {
-			if position == 3 {
-				position = 0
+			if position == West {
+				position = North
 			} else {
 				position++
 			}
 		}
 	} else {
-		if position == 0 {
+		if position == North {
 			y++
-		} else if position == 1 {
+		} else if position == East {
 			x++
-		} else if position == 2 {
+		} else if position == South {
 			y--
-		} else if position == 3 {
+		} else if position == West {
 			x--
 		}
 	}
-
 	return x, y, position
 }
