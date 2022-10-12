@@ -583,6 +583,45 @@ func Test_CalculateNextPosition_X_Minus_4_Y_0_Row_4_Column_0_Position_South_Walk
 	}
 }
 
+func Test_CalculateNextPosition_X_Minus_4_Y_0_Row_4_Column_0_Position_West_Walk_W_OutOfTable(t *testing.T) {
+	robotwalk.X = -4
+	robotwalk.Y = 0
+	robotwalk.Row = 4
+	robotwalk.Column = 0
+	robotwalk.Position = robotwalk.West
+	walk := "W"
+
+	expectedX := -4
+	expectedY := 0
+	expectedRow := 4
+	expectedColumn := 0
+	expectedPosition := robotwalk.West
+
+	robotwalk.CalculateNextPosition(walk)
+
+	actualX := robotwalk.X
+	actualY := robotwalk.Y
+	actualRow := robotwalk.Row
+	actualColumn := robotwalk.Column
+	actualPosition := robotwalk.Position
+
+	if expectedX != actualX {
+		t.Errorf("Expect X %v but got %v", expectedX, actualX)
+	}
+	if expectedY != actualY {
+		t.Errorf("Expect Y %v but got %v", expectedY, actualY)
+	}
+	if expectedRow != actualRow {
+		t.Errorf("Expect Row %v but got %v", expectedRow, actualRow)
+	}
+	if expectedColumn != actualColumn {
+		t.Errorf("Expect Column %v but got %v", expectedColumn, actualColumn)
+	}
+	if expectedPosition != actualPosition {
+		t.Errorf("Expect Position %v but got %v", expectedPosition, actualPosition)
+	}
+}
+
 func Test_RobotWalk_WWLWRWW(t *testing.T) {
 	walk := "WWLWRWW"
 	expectedX := -1
