@@ -1,6 +1,8 @@
 package robotwalk
 
-import "strconv"
+import (
+	"strconv"
+)
 
 var Position int
 var North = 0
@@ -58,19 +60,20 @@ func CalculateNextPosition(walk string) {
 			}
 		}
 	} else {
-		if Position == North {
+		if Position == North && Y < 4 {
 			Y++
 			Row--
-		} else if Position == East {
+		} else if Position == East && X < 4 {
 			X++
 			Column++
-		} else if Position == South {
+		} else if Position == South && Y > -4 {
 			Y--
 			Row++
-		} else if Position == West {
+		} else if Position == West && X > -4 {
 			X--
 			Column--
 		}
+
 	}
 }
 
