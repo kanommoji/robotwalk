@@ -1,5 +1,7 @@
 package robotwalk
 
+import "fmt"
+
 var Position int
 var North = 0
 var East = 1
@@ -15,8 +17,8 @@ var Row int
 var Column int
 
 func SetStartWalking() {
-	setStartXY()
 	setStartTable()
+	setStartXY()
 	setStartPosition()
 }
 
@@ -30,14 +32,14 @@ func setStartXY() {
 }
 
 func setStartTable() {
-	Row = 4
-	Column = 4
-	Table[Row][Column] = "0"
 	for column := 0; column < 9; column++ {
 		for row := 0; row < 9; row++ {
 			Table[row][column] = "*"
 		}
 	}
+	Row = 4
+	Column = 4
+	Table[Row][Column] = "0"
 }
 
 func CalculateNextPosition(walk string) {
@@ -90,4 +92,13 @@ func setTable(row int, column int) {
 	Row = row
 	Column = column
 	Table[row][column] = "0"
+}
+
+func ReadTable() {
+	for row := 0; row < 9; row++ {
+		for column := 0; column < 9; column++ {
+			fmt.Print(Table[row][column])
+		}
+		fmt.Println("")
+	}
 }
