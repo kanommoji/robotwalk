@@ -40,37 +40,41 @@ func setStartTable() {
 	}
 }
 
+func CalculateNextPosition(walk string) {
+	if walk != "W" {
+		if walk == "L" {
+			if Position == North {
+				Position = West
+			} else {
+				Position--
+			}
+		} else {
+			if Position == West {
+				Position = North
+			} else {
+				Position++
+			}
+		}
+	} else {
+		if Position == North {
+			Y++
+			Row--
+		} else if Position == East {
+			X++
+			Column++
+		} else if Position == South {
+			Y--
+			Row++
+		} else if Position == West {
+			X--
+			Column--
+		}
+	}
+}
+
 // func RobotWalk(walk string) {
 // 	for _, c := range walk {
 // 		CalculateRobotWalk(string(c))
-// 	}
-// }
-
-// func CalculateRobotWalk(walk string) {
-// 	if walk != "W" {
-// 		if walk == "L" {
-// 			if Position == North {
-// 				Position = West
-// 			} else {
-// 				Position--
-// 			}
-// 		} else {
-// 			if Position == West {
-// 				Position = North
-// 			} else {
-// 				Position++
-// 			}
-// 		}
-// 	} else {
-// 		if Position == North {
-// 			Y++
-// 		} else if Position == East {
-// 			X++
-// 		} else if Position == South {
-// 			Y--
-// 		} else if Position == West {
-// 			X--
-// 		}
 // 	}
 // }
 

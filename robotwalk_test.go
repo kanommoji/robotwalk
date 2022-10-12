@@ -27,250 +27,561 @@ func Test_SetStartWalking(t *testing.T) {
 		t.Errorf("Expect Y %v but got %v", expectedY, actualY)
 	}
 	if expectedRow != actualRow {
-		t.Errorf("Expect X %v but got %v", expectedRow, actualRow)
+		t.Errorf("Expect Row %v but got %v", expectedRow, actualRow)
 	}
 	if expectedColumn != actualColumn {
-		t.Errorf("Expect Y %v but got %v", expectedColumn, actualColumn)
+		t.Errorf("Expect Column %v but got %v", expectedColumn, actualColumn)
 	}
 	if expectedPosition != actualPosition {
-		t.Errorf("Expect Y %v but got %v", expectedPosition, actualPosition)
+		t.Errorf("Expect Position %v but got %v", expectedPosition, actualPosition)
 	}
 }
 
-// func Test_SetResult_WalkArray_WWLWRWW_Should_Be_X_Minus1_Y_4(t *testing.T) {
-// 	expectedX := -1
-// 	expectedY := 4
+func Test_CalculateNextPosition_X_0_Y_0_Row_4_Column_4_Position_North_Walk_W(t *testing.T) {
+	robotwalk.X = 0
+	robotwalk.Y = 0
+	robotwalk.Row = 4
+	robotwalk.Column = 4
+	robotwalk.Position = robotwalk.North
+	walk := "W"
 
-// 	actualX, actualY := robotwalk.SetResult("WWLWRWW")
+	expectedX := 0
+	expectedY := 1
+	expectedRow := 3
+	expectedColumn := 4
+	expectedPosition := robotwalk.North
 
-// 	if expectedX != actualX {
-// 		t.Errorf("Expect X %v but got %v", expectedX, actualX)
-// 	}
-// 	if expectedY != actualY {
-// 		t.Errorf("Expect Y %v but got %v", expectedY, actualY)
-// 	}
-// }
+	robotwalk.CalculateNextPosition(walk)
 
-// func Test_SetResult_WalkArray_LWWWWLW_Should_Be_X_Minus4_Y_Minus1(t *testing.T) {
-// 	expectedX := -4
-// 	expectedY := -1
+	actualX := robotwalk.X
+	actualY := robotwalk.Y
+	actualRow := robotwalk.Row
+	actualColumn := robotwalk.Column
+	actualPosition := robotwalk.Position
 
-// 	actualX, actualY := robotwalk.SetResult("LWWWWLW")
+	if expectedX != actualX {
+		t.Errorf("Expect X %v but got %v", expectedX, actualX)
+	}
+	if expectedY != actualY {
+		t.Errorf("Expect Y %v but got %v", expectedY, actualY)
+	}
+	if expectedRow != actualRow {
+		t.Errorf("Expect Row %v but got %v", expectedRow, actualRow)
+	}
+	if expectedColumn != actualColumn {
+		t.Errorf("Expect Column %v but got %v", expectedColumn, actualColumn)
+	}
+	if expectedPosition != actualPosition {
+		t.Errorf("Expect Position %v but got %v", expectedPosition, actualPosition)
+	}
+}
 
-// 	if expectedX != actualX {
-// 		t.Errorf("Expect X %v but got %v", expectedX, actualX)
-// 	}
-// 	if expectedY != actualY {
-// 		t.Errorf("Expect Y %v but got %v", expectedY, actualY)
-// 	}
-// }
+func Test_CalculateNextPosition_X_0_Y_1_Row_3_Column_4_Position_North_Walk_W(t *testing.T) {
+	robotwalk.X = 0
+	robotwalk.Y = 1
+	robotwalk.Row = 3
+	robotwalk.Column = 4
+	robotwalk.Position = robotwalk.North
+	walk := "W"
 
-// func Test_CalculateNextPosition_X_0_Y_0_Position_North_Walk_W_Should_Be_X_0_Y_1_Position_North(t *testing.T) {
-// 	x := 0
-// 	y := 0
-// 	walk := "W"
-// 	position := robotwalk.North
+	expectedX := 0
+	expectedY := 2
+	expectedRow := 2
+	expectedColumn := 4
+	expectedPosition := robotwalk.North
 
-// 	expectedX := 0
-// 	expectedY := 1
-// 	expectedPosition := robotwalk.North
+	robotwalk.CalculateNextPosition(walk)
 
-// 	actualX, actualY, actualPosition := robotwalk.CalculateNextPosition(x, y, position, walk)
+	actualX := robotwalk.X
+	actualY := robotwalk.Y
+	actualRow := robotwalk.Row
+	actualColumn := robotwalk.Column
+	actualPosition := robotwalk.Position
 
-// 	if expectedX != actualX {
-// 		t.Errorf("Expect X %v but got %v", expectedX, actualX)
-// 	}
-// 	if expectedY != actualY {
-// 		t.Errorf("Expect Y %v but got %v", expectedY, actualY)
-// 	}
-// 	if expectedPosition != actualPosition {
-// 		t.Errorf("Expect Position %v but got %v", expectedPosition, actualPosition)
-// 	}
-// }
+	if expectedX != actualX {
+		t.Errorf("Expect X %v but got %v", expectedX, actualX)
+	}
+	if expectedY != actualY {
+		t.Errorf("Expect Y %v but got %v", expectedY, actualY)
+	}
+	if expectedRow != actualRow {
+		t.Errorf("Expect Row %v but got %v", expectedRow, actualRow)
+	}
+	if expectedColumn != actualColumn {
+		t.Errorf("Expect Column %v but got %v", expectedColumn, actualColumn)
+	}
+	if expectedPosition != actualPosition {
+		t.Errorf("Expect Position %v but got %v", expectedPosition, actualPosition)
+	}
+}
 
-// func Test_CalculateNextPosition_X_0_Y_1_Position_North_Walk_W_Should_Be_X_0_Y_2_Position_North(t *testing.T) {
-// 	x := 0
-// 	y := 1
-// 	walk := "W"
-// 	position := robotwalk.North
+func Test_CalculateNextPosition_X_0_Y_2_Row_2_Column_4_Position_North_Walk_L(t *testing.T) {
+	robotwalk.X = 0
+	robotwalk.Y = 2
+	robotwalk.Row = 2
+	robotwalk.Column = 4
+	robotwalk.Position = robotwalk.North
+	walk := "L"
 
-// 	expectedX := 0
-// 	expectedY := 2
-// 	expectedPosition := robotwalk.North
+	expectedX := 0
+	expectedY := 2
+	expectedRow := 2
+	expectedColumn := 4
+	expectedPosition := robotwalk.West
 
-// 	actualX, actualY, actualPosition := robotwalk.CalculateNextPosition(x, y, position, walk)
+	robotwalk.CalculateNextPosition(walk)
 
-// 	if expectedX != actualX {
-// 		t.Errorf("Expect X %v but got %v", expectedX, actualX)
-// 	}
-// 	if expectedY != actualY {
-// 		t.Errorf("Expect Y %v but got %v", expectedY, actualY)
-// 	}
-// 	if expectedPosition != actualPosition {
-// 		t.Errorf("Expect Position %v but got %v", expectedPosition, actualPosition)
-// 	}
-// }
+	actualX := robotwalk.X
+	actualY := robotwalk.Y
+	actualRow := robotwalk.Row
+	actualColumn := robotwalk.Column
+	actualPosition := robotwalk.Position
 
-// func Test_CalculateNextPosition_X_0_Y_2_Position_North_Walk_L_Should_Be_X_0_Y_2_Position_West(t *testing.T) {
-// 	x := 0
-// 	y := 2
-// 	walk := "L"
-// 	position := robotwalk.North
+	if expectedX != actualX {
+		t.Errorf("Expect X %v but got %v", expectedX, actualX)
+	}
+	if expectedY != actualY {
+		t.Errorf("Expect Y %v but got %v", expectedY, actualY)
+	}
+	if expectedRow != actualRow {
+		t.Errorf("Expect Row %v but got %v", expectedRow, actualRow)
+	}
+	if expectedColumn != actualColumn {
+		t.Errorf("Expect Column %v but got %v", expectedColumn, actualColumn)
+	}
+	if expectedPosition != actualPosition {
+		t.Errorf("Expect Position %v but got %v", expectedPosition, actualPosition)
+	}
+}
 
-// 	expectedX := 0
-// 	expectedY := 2
-// 	expectedPosition := robotwalk.West
+func Test_CalculateNextPosition_X_0_Y_2_Row_2_Column_4_Position_West_Walk_W(t *testing.T) {
+	robotwalk.X = 0
+	robotwalk.Y = 2
+	robotwalk.Row = 2
+	robotwalk.Column = 4
+	robotwalk.Position = robotwalk.West
+	walk := "W"
 
-// 	actualX, actualY, actualPosition := robotwalk.CalculateNextPosition(x, y, position, walk)
+	expectedX := -1
+	expectedY := 2
+	expectedRow := 2
+	expectedColumn := 3
+	expectedPosition := robotwalk.West
 
-// 	if expectedX != actualX {
-// 		t.Errorf("Expect X %v but got %v", expectedX, actualX)
-// 	}
-// 	if expectedY != actualY {
-// 		t.Errorf("Expect Y %v but got %v", expectedY, actualY)
-// 	}
-// 	if expectedPosition != actualPosition {
-// 		t.Errorf("Expect Position %v but got %v", expectedPosition, actualPosition)
-// 	}
-// }
+	robotwalk.CalculateNextPosition(walk)
 
-// func Test_CalculateNextPosition_X_0_Y_2_Position_West_Walk_W_Should_Be_X_Minus1_Y_2_Position_West(t *testing.T) {
-// 	x := 0
-// 	y := 2
-// 	walk := "W"
-// 	position := robotwalk.West
+	actualX := robotwalk.X
+	actualY := robotwalk.Y
+	actualRow := robotwalk.Row
+	actualColumn := robotwalk.Column
+	actualPosition := robotwalk.Position
 
-// 	expectedX := -1
-// 	expectedY := 2
-// 	expectedPosition := robotwalk.West
+	if expectedX != actualX {
+		t.Errorf("Expect X %v but got %v", expectedX, actualX)
+	}
+	if expectedY != actualY {
+		t.Errorf("Expect Y %v but got %v", expectedY, actualY)
+	}
+	if expectedRow != actualRow {
+		t.Errorf("Expect Row %v but got %v", expectedRow, actualRow)
+	}
+	if expectedColumn != actualColumn {
+		t.Errorf("Expect Column %v but got %v", expectedColumn, actualColumn)
+	}
+	if expectedPosition != actualPosition {
+		t.Errorf("Expect Position %v but got %v", expectedPosition, actualPosition)
+	}
+}
 
-// 	actualX, actualY, actualPosition := robotwalk.CalculateNextPosition(x, y, position, walk)
+func Test_CalculateNextPosition_X_Minus_1_Y_2_Row_2_Column_3_Position_West_Walk_R(t *testing.T) {
+	robotwalk.X = -1
+	robotwalk.Y = 2
+	robotwalk.Row = 2
+	robotwalk.Column = 3
+	robotwalk.Position = robotwalk.West
+	walk := "R"
 
-// 	if expectedX != actualX {
-// 		t.Errorf("Expect X %v but got %v", expectedX, actualX)
-// 	}
-// 	if expectedY != actualY {
-// 		t.Errorf("Expect Y %v but got %v", expectedY, actualY)
-// 	}
-// 	if expectedPosition != actualPosition {
-// 		t.Errorf("Expect Position %v but got %v", expectedPosition, actualPosition)
-// 	}
-// }
+	expectedX := -1
+	expectedY := 2
+	expectedRow := 2
+	expectedColumn := 3
+	expectedPosition := robotwalk.North
 
-// func Test_CalculateNextPosition_X_Minus1_Y_2_Position_West_Walk_R_Should_Be_X_Minus1_Y_2_Position_North(t *testing.T) {
-// 	x := -1
-// 	y := 2
-// 	walk := "R"
-// 	position := robotwalk.West
+	robotwalk.CalculateNextPosition(walk)
 
-// 	expectedX := -1
-// 	expectedY := 2
-// 	expectedPosition := robotwalk.North
+	actualX := robotwalk.X
+	actualY := robotwalk.Y
+	actualRow := robotwalk.Row
+	actualColumn := robotwalk.Column
+	actualPosition := robotwalk.Position
 
-// 	actualX, actualY, actualPosition := robotwalk.CalculateNextPosition(x, y, position, walk)
+	if expectedX != actualX {
+		t.Errorf("Expect X %v but got %v", expectedX, actualX)
+	}
+	if expectedY != actualY {
+		t.Errorf("Expect Y %v but got %v", expectedY, actualY)
+	}
+	if expectedRow != actualRow {
+		t.Errorf("Expect Row %v but got %v", expectedRow, actualRow)
+	}
+	if expectedColumn != actualColumn {
+		t.Errorf("Expect Column %v but got %v", expectedColumn, actualColumn)
+	}
+	if expectedPosition != actualPosition {
+		t.Errorf("Expect Position %v but got %v", expectedPosition, actualPosition)
+	}
+}
 
-// 	if expectedX != actualX {
-// 		t.Errorf("Expect X %v but got %v", expectedX, actualX)
-// 	}
-// 	if expectedY != actualY {
-// 		t.Errorf("Expect Y %v but got %v", expectedY, actualY)
-// 	}
-// 	if expectedPosition != actualPosition {
-// 		t.Errorf("Expect Position %v but got %v", expectedPosition, actualPosition)
-// 	}
-// }
+func Test_CalculateNextPosition_X_Minus_1_Y_2_Row_2_Column_3_Position_North_Walk_W(t *testing.T) {
+	robotwalk.X = -1
+	robotwalk.Y = 2
+	robotwalk.Row = 2
+	robotwalk.Column = 3
+	robotwalk.Position = robotwalk.North
+	walk := "W"
 
-// func Test_CalculateNextPosition_X_Minus1_Y_2_Position_North_Walk_W_Should_Be_X_Minus1_Y_3_Position_North(t *testing.T) {
-// 	x := -1
-// 	y := 2
-// 	walk := "W"
-// 	position := robotwalk.North
+	expectedX := -1
+	expectedY := 3
+	expectedRow := 1
+	expectedColumn := 3
+	expectedPosition := robotwalk.North
 
-// 	expectedX := -1
-// 	expectedY := 3
-// 	expectedPosition := robotwalk.North
+	robotwalk.CalculateNextPosition(walk)
 
-// 	actualX, actualY, actualPosition := robotwalk.CalculateNextPosition(x, y, position, walk)
+	actualX := robotwalk.X
+	actualY := robotwalk.Y
+	actualRow := robotwalk.Row
+	actualColumn := robotwalk.Column
+	actualPosition := robotwalk.Position
 
-// 	if expectedX != actualX {
-// 		t.Errorf("Expect X %v but got %v", expectedX, actualX)
-// 	}
-// 	if expectedY != actualY {
-// 		t.Errorf("Expect Y %v but got %v", expectedY, actualY)
-// 	}
-// 	if expectedPosition != actualPosition {
-// 		t.Errorf("Expect Position %v but got %v", expectedPosition, actualPosition)
-// 	}
-// }
+	if expectedX != actualX {
+		t.Errorf("Expect X %v but got %v", expectedX, actualX)
+	}
+	if expectedY != actualY {
+		t.Errorf("Expect Y %v but got %v", expectedY, actualY)
+	}
+	if expectedRow != actualRow {
+		t.Errorf("Expect Row %v but got %v", expectedRow, actualRow)
+	}
+	if expectedColumn != actualColumn {
+		t.Errorf("Expect Column %v but got %v", expectedColumn, actualColumn)
+	}
+	if expectedPosition != actualPosition {
+		t.Errorf("Expect Position %v but got %v", expectedPosition, actualPosition)
+	}
+}
 
-// func Test_CalculateNextPosition_X_Minus1_Y_3_Position_North_Walk_W_Should_Be_X_Minus1_Y_4_Position_North(t *testing.T) {
-// 	x := -1
-// 	y := 3
-// 	walk := "W"
-// 	position := robotwalk.North
+func Test_CalculateNextPosition_X_Minus_1_Y_3_Row_1_Column_3_Position_North_Walk_W(t *testing.T) {
+	robotwalk.X = -1
+	robotwalk.Y = 3
+	robotwalk.Row = 1
+	robotwalk.Column = 3
+	robotwalk.Position = robotwalk.North
+	walk := "W"
 
-// 	expectedX := -1
-// 	expectedY := 4
-// 	expectedPosition := robotwalk.North
+	expectedX := -1
+	expectedY := 4
+	expectedRow := 0
+	expectedColumn := 3
+	expectedPosition := robotwalk.North
 
-// 	actualX, actualY, actualPosition := robotwalk.CalculateNextPosition(x, y, position, walk)
+	robotwalk.CalculateNextPosition(walk)
 
-// 	if expectedX != actualX {
-// 		t.Errorf("Expect X %v but got %v", expectedX, actualX)
-// 	}
-// 	if expectedY != actualY {
-// 		t.Errorf("Expect Y %v but got %v", expectedY, actualY)
-// 	}
-// 	if expectedPosition != actualPosition {
-// 		t.Errorf("Expect Position %v but got %v", expectedPosition, actualPosition)
-// 	}
-// }
+	actualX := robotwalk.X
+	actualY := robotwalk.Y
+	actualRow := robotwalk.Row
+	actualColumn := robotwalk.Column
+	actualPosition := robotwalk.Position
 
-// func Test_CalculateNextPosition_X_0_Y_0_Position_North_Walk_L_Should_Be_X_0_Y_0_Position_West(t *testing.T) {
-// 	x := 0
-// 	y := 0
-// 	walk := "L"
-// 	position := robotwalk.North
+	if expectedX != actualX {
+		t.Errorf("Expect X %v but got %v", expectedX, actualX)
+	}
+	if expectedY != actualY {
+		t.Errorf("Expect Y %v but got %v", expectedY, actualY)
+	}
+	if expectedRow != actualRow {
+		t.Errorf("Expect Row %v but got %v", expectedRow, actualRow)
+	}
+	if expectedColumn != actualColumn {
+		t.Errorf("Expect Column %v but got %v", expectedColumn, actualColumn)
+	}
+	if expectedPosition != actualPosition {
+		t.Errorf("Expect Position %v but got %v", expectedPosition, actualPosition)
+	}
+}
 
-// 	expectedX := 0
-// 	expectedY := 0
-// 	expectedPosition := robotwalk.West
+func Test_CalculateNextPosition_X_0_Y_0_Row_4_Column_4_Position_North_Walk_L(t *testing.T) {
+	robotwalk.X = 0
+	robotwalk.Y = 0
+	robotwalk.Row = 4
+	robotwalk.Column = 4
+	robotwalk.Position = robotwalk.North
+	walk := "L"
 
-// 	actualX, actualY, actualPosition := robotwalk.CalculateNextPosition(x, y, position, walk)
+	expectedX := 0
+	expectedY := 0
+	expectedRow := 4
+	expectedColumn := 4
+	expectedPosition := robotwalk.West
 
-// 	if expectedX != actualX {
-// 		t.Errorf("Expect X %v but got %v", expectedX, actualX)
-// 	}
-// 	if expectedY != actualY {
-// 		t.Errorf("Expect Y %v but got %v", expectedY, actualY)
-// 	}
-// 	if expectedPosition != actualPosition {
-// 		t.Errorf("Expect Position %v but got %v", expectedPosition, actualPosition)
-// 	}
-// }
+	robotwalk.CalculateNextPosition(walk)
 
-// func Test_CalculateNextPosition_X_Minus4_Y_0_Position_West_Walk_W_Should_Be_X_Minus4_Y_Minus1_Position_South(t *testing.T) {
-// 	x := -4
-// 	y := 0
-// 	walk := "W"
-// 	position := robotwalk.South
+	actualX := robotwalk.X
+	actualY := robotwalk.Y
+	actualRow := robotwalk.Row
+	actualColumn := robotwalk.Column
+	actualPosition := robotwalk.Position
 
-// 	expectedX := -4
-// 	expectedY := -1
-// 	expectedPosition := robotwalk.South
+	if expectedX != actualX {
+		t.Errorf("Expect X %v but got %v", expectedX, actualX)
+	}
+	if expectedY != actualY {
+		t.Errorf("Expect Y %v but got %v", expectedY, actualY)
+	}
+	if expectedRow != actualRow {
+		t.Errorf("Expect Row %v but got %v", expectedRow, actualRow)
+	}
+	if expectedColumn != actualColumn {
+		t.Errorf("Expect Column %v but got %v", expectedColumn, actualColumn)
+	}
+	if expectedPosition != actualPosition {
+		t.Errorf("Expect Position %v but got %v", expectedPosition, actualPosition)
+	}
+}
 
-// 	actualX, actualY, actualPosition := robotwalk.CalculateNextPosition(x, y, position, walk)
+func Test_CalculateNextPosition_X_0_Y_0_Row_4_Column_4_Position_West_Walk_W(t *testing.T) {
+	robotwalk.X = 0
+	robotwalk.Y = 0
+	robotwalk.Row = 4
+	robotwalk.Column = 4
+	robotwalk.Position = robotwalk.West
+	walk := "W"
 
-// 	if expectedX != actualX {
-// 		t.Errorf("Expect X %v but got %v", expectedX, actualX)
-// 	}
-// 	if expectedY != actualY {
-// 		t.Errorf("Expect Y %v but got %v", expectedY, actualY)
-// 	}
-// 	if expectedPosition != actualPosition {
-// 		t.Errorf("Expect Position %v but got %v", expectedPosition, actualPosition)
-// 	}
-// }
+	expectedX := -1
+	expectedY := 0
+	expectedRow := 4
+	expectedColumn := 3
+	expectedPosition := robotwalk.West
+
+	robotwalk.CalculateNextPosition(walk)
+
+	actualX := robotwalk.X
+	actualY := robotwalk.Y
+	actualRow := robotwalk.Row
+	actualColumn := robotwalk.Column
+	actualPosition := robotwalk.Position
+
+	if expectedX != actualX {
+		t.Errorf("Expect X %v but got %v", expectedX, actualX)
+	}
+	if expectedY != actualY {
+		t.Errorf("Expect Y %v but got %v", expectedY, actualY)
+	}
+	if expectedRow != actualRow {
+		t.Errorf("Expect Row %v but got %v", expectedRow, actualRow)
+	}
+	if expectedColumn != actualColumn {
+		t.Errorf("Expect Column %v but got %v", expectedColumn, actualColumn)
+	}
+	if expectedPosition != actualPosition {
+		t.Errorf("Expect Position %v but got %v", expectedPosition, actualPosition)
+	}
+}
+
+func Test_CalculateNextPosition_X_Minus_1_Y_0_Row_4_Column_3_Position_West_Walk_W(t *testing.T) {
+	robotwalk.X = -1
+	robotwalk.Y = 0
+	robotwalk.Row = 4
+	robotwalk.Column = 3
+	robotwalk.Position = robotwalk.West
+	walk := "W"
+
+	expectedX := -2
+	expectedY := 0
+	expectedRow := 4
+	expectedColumn := 2
+	expectedPosition := robotwalk.West
+
+	robotwalk.CalculateNextPosition(walk)
+
+	actualX := robotwalk.X
+	actualY := robotwalk.Y
+	actualRow := robotwalk.Row
+	actualColumn := robotwalk.Column
+	actualPosition := robotwalk.Position
+
+	if expectedX != actualX {
+		t.Errorf("Expect X %v but got %v", expectedX, actualX)
+	}
+	if expectedY != actualY {
+		t.Errorf("Expect Y %v but got %v", expectedY, actualY)
+	}
+	if expectedRow != actualRow {
+		t.Errorf("Expect Row %v but got %v", expectedRow, actualRow)
+	}
+	if expectedColumn != actualColumn {
+		t.Errorf("Expect Column %v but got %v", expectedColumn, actualColumn)
+	}
+	if expectedPosition != actualPosition {
+		t.Errorf("Expect Position %v but got %v", expectedPosition, actualPosition)
+	}
+}
+
+func Test_CalculateNextPosition_X_Minus_2_Y_0_Row_4_Column_2_Position_West_Walk_W(t *testing.T) {
+	robotwalk.X = -2
+	robotwalk.Y = 0
+	robotwalk.Row = 4
+	robotwalk.Column = 2
+	robotwalk.Position = robotwalk.West
+	walk := "W"
+
+	expectedX := -3
+	expectedY := 0
+	expectedRow := 4
+	expectedColumn := 1
+	expectedPosition := robotwalk.West
+
+	robotwalk.CalculateNextPosition(walk)
+
+	actualX := robotwalk.X
+	actualY := robotwalk.Y
+	actualRow := robotwalk.Row
+	actualColumn := robotwalk.Column
+	actualPosition := robotwalk.Position
+
+	if expectedX != actualX {
+		t.Errorf("Expect X %v but got %v", expectedX, actualX)
+	}
+	if expectedY != actualY {
+		t.Errorf("Expect Y %v but got %v", expectedY, actualY)
+	}
+	if expectedRow != actualRow {
+		t.Errorf("Expect Row %v but got %v", expectedRow, actualRow)
+	}
+	if expectedColumn != actualColumn {
+		t.Errorf("Expect Column %v but got %v", expectedColumn, actualColumn)
+	}
+	if expectedPosition != actualPosition {
+		t.Errorf("Expect Position %v but got %v", expectedPosition, actualPosition)
+	}
+}
+
+func Test_CalculateNextPosition_X_Minus_3_Y_0_Row_4_Column_1_Position_West_Walk_W(t *testing.T) {
+	robotwalk.X = -3
+	robotwalk.Y = 0
+	robotwalk.Row = 4
+	robotwalk.Column = 1
+	robotwalk.Position = robotwalk.West
+	walk := "W"
+
+	expectedX := -4
+	expectedY := 0
+	expectedRow := 4
+	expectedColumn := 0
+	expectedPosition := robotwalk.West
+
+	robotwalk.CalculateNextPosition(walk)
+
+	actualX := robotwalk.X
+	actualY := robotwalk.Y
+	actualRow := robotwalk.Row
+	actualColumn := robotwalk.Column
+	actualPosition := robotwalk.Position
+
+	if expectedX != actualX {
+		t.Errorf("Expect X %v but got %v", expectedX, actualX)
+	}
+	if expectedY != actualY {
+		t.Errorf("Expect Y %v but got %v", expectedY, actualY)
+	}
+	if expectedRow != actualRow {
+		t.Errorf("Expect Row %v but got %v", expectedRow, actualRow)
+	}
+	if expectedColumn != actualColumn {
+		t.Errorf("Expect Column %v but got %v", expectedColumn, actualColumn)
+	}
+	if expectedPosition != actualPosition {
+		t.Errorf("Expect Position %v but got %v", expectedPosition, actualPosition)
+	}
+}
+
+func Test_CalculateNextPosition_X_Minus_4_Y_0_Row_4_Column_0_Position_West_Walk_L(t *testing.T) {
+	robotwalk.X = -4
+	robotwalk.Y = 0
+	robotwalk.Row = 4
+	robotwalk.Column = 0
+	robotwalk.Position = robotwalk.West
+	walk := "L"
+
+	expectedX := -4
+	expectedY := 0
+	expectedRow := 4
+	expectedColumn := 0
+	expectedPosition := robotwalk.South
+
+	robotwalk.CalculateNextPosition(walk)
+
+	actualX := robotwalk.X
+	actualY := robotwalk.Y
+	actualRow := robotwalk.Row
+	actualColumn := robotwalk.Column
+	actualPosition := robotwalk.Position
+
+	if expectedX != actualX {
+		t.Errorf("Expect X %v but got %v", expectedX, actualX)
+	}
+	if expectedY != actualY {
+		t.Errorf("Expect Y %v but got %v", expectedY, actualY)
+	}
+	if expectedRow != actualRow {
+		t.Errorf("Expect Row %v but got %v", expectedRow, actualRow)
+	}
+	if expectedColumn != actualColumn {
+		t.Errorf("Expect Column %v but got %v", expectedColumn, actualColumn)
+	}
+	if expectedPosition != actualPosition {
+		t.Errorf("Expect Position %v but got %v", expectedPosition, actualPosition)
+	}
+}
+
+func Test_CalculateNextPosition_X_Minus_4_Y_0_Row_4_Column_0_Position_South_Walk_W(t *testing.T) {
+	robotwalk.X = -4
+	robotwalk.Y = 0
+	robotwalk.Row = 4
+	robotwalk.Column = 0
+	robotwalk.Position = robotwalk.South
+	walk := "W"
+
+	expectedX := -4
+	expectedY := -1
+	expectedRow := 5
+	expectedColumn := 0
+	expectedPosition := robotwalk.South
+
+	robotwalk.CalculateNextPosition(walk)
+
+	actualX := robotwalk.X
+	actualY := robotwalk.Y
+	actualRow := robotwalk.Row
+	actualColumn := robotwalk.Column
+	actualPosition := robotwalk.Position
+
+	if expectedX != actualX {
+		t.Errorf("Expect X %v but got %v", expectedX, actualX)
+	}
+	if expectedY != actualY {
+		t.Errorf("Expect Y %v but got %v", expectedY, actualY)
+	}
+	if expectedRow != actualRow {
+		t.Errorf("Expect Row %v but got %v", expectedRow, actualRow)
+	}
+	if expectedColumn != actualColumn {
+		t.Errorf("Expect Column %v but got %v", expectedColumn, actualColumn)
+	}
+	if expectedPosition != actualPosition {
+		t.Errorf("Expect Position %v but got %v", expectedPosition, actualPosition)
+	}
+}
 
 // func Test_SetPositionRobotWalk_X_1_Y_1_Should_be_Table55_0(t *testing.T) {
 // 	x := 1
@@ -297,5 +608,33 @@ func Test_SetStartWalking(t *testing.T) {
 
 // 	if expected != actual {
 // 		t.Errorf("Expect X %v but got %v", expected, actual)
+// 	}
+// }
+
+// func Test_SetResult_WalkArray_WWLWRWW_Should_Be_X_Minus1_Y_4(t *testing.T) {
+// 	expectedX := -1
+// 	expectedY := 4
+
+// 	actualX, actualY := robotwalk.SetResult("WWLWRWW")
+
+// 	if expectedX != actualX {
+// 		t.Errorf("Expect X %v but got %v", expectedX, actualX)
+// 	}
+// 	if expectedY != actualY {
+// 		t.Errorf("Expect Y %v but got %v", expectedY, actualY)
+// 	}
+// }
+
+// func Test_SetResult_WalkArray_LWWWWLW_Should_Be_X_Minus4_Y_Minus1(t *testing.T) {
+// 	expectedX := -4
+// 	expectedY := -1
+
+// 	actualX, actualY := robotwalk.SetResult("LWWWWLW")
+
+// 	if expectedX != actualX {
+// 		t.Errorf("Expect X %v but got %v", expectedX, actualX)
+// 	}
+// 	if expectedY != actualY {
+// 		t.Errorf("Expect Y %v but got %v", expectedY, actualY)
 // 	}
 // }
