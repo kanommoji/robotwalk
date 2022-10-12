@@ -1,0 +1,104 @@
+{
+	"info": {
+		"_postman_id": "adfd25fe-cace-4462-9327-741adbd41472",
+		"name": "RobotWalk",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5146363"
+	},
+	"item": [
+		{
+			"name": "Walk LWWWWLW Position (-4,-1)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Body is correct\", function () {",
+							"    pm.response.to.have.body(`Position : (-4,-1)",
+							"*********",
+							"*********",
+							"*********",
+							"*********",
+							"00000****",
+							"0********",
+							"*********",
+							"*********",
+							"*********",
+							"`);});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080?walk=LWWWWLW",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"query": [
+						{
+							"key": "walk",
+							"value": "LWWWWLW"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Walk WWLWRWW Postion (-1,4)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Body is correct\", function () {",
+							"    pm.response.to.have.body(`Position : (-1,4)",
+							"***0*****",
+							"***0*****",
+							"***00****",
+							"****0****",
+							"****0****",
+							"*********",
+							"*********",
+							"*********",
+							"*********",
+							"`);});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080?walk=WWLWRWW",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"query": [
+						{
+							"key": "walk",
+							"value": "WWLWRWW"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
