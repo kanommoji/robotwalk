@@ -1,5 +1,7 @@
 package robotwalk
 
+import "strconv"
+
 var Position int
 var North = 0
 var East = 1
@@ -92,7 +94,11 @@ func setTable(row int, column int) {
 	Table[row][column] = "0"
 }
 
-func ReadTable() string {
+func readXYPoint() string {
+	return "Position : (" + strconv.Itoa(X) + "," + strconv.Itoa(Y) + ")"
+}
+
+func readTable() string {
 	var table string
 	for row := 0; row < 9; row++ {
 		for column := 0; column < 9; column++ {
@@ -101,4 +107,8 @@ func ReadTable() string {
 		table += "\n"
 	}
 	return table
+}
+
+func ReadResult() string {
+	return readXYPoint() + "\n" + readTable()
 }
