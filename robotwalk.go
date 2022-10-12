@@ -18,6 +18,15 @@ var Y int
 var Row int
 var Column int
 
+func RobotWalk(walk string) {
+	SetStartWalking()
+	for _, c := range walk {
+		CalculateNextPosition(string(c))
+		setXY(X, Y)
+		setTable(Row, Column)
+	}
+}
+
 func SetStartWalking() {
 	setStartTable()
 	setStartXY()
@@ -77,15 +86,6 @@ func CalculateNextPosition(walk string) {
 	}
 }
 
-func RobotWalk(walk string) {
-	SetStartWalking()
-	for _, c := range walk {
-		CalculateNextPosition(string(c))
-		setXY(X, Y)
-		setTable(Row, Column)
-	}
-}
-
 func setXY(x int, y int) {
 	X = x
 	Y = y
@@ -95,6 +95,10 @@ func setTable(row int, column int) {
 	Row = row
 	Column = column
 	Table[row][column] = "0"
+}
+
+func ReadResult() string {
+	return readXYPoint() + "\n" + readTable()
 }
 
 func readXYPoint() string {
@@ -110,8 +114,4 @@ func readTable() string {
 		table += "\n"
 	}
 	return table
-}
-
-func ReadResult() string {
-	return readXYPoint() + "\n" + readTable()
 }
