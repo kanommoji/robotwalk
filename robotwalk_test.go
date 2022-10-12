@@ -657,3 +657,21 @@ func Test_RobotWalk_LWWWWLW(t *testing.T) {
 		t.Errorf("Expect Y %v but got %v", expectedY, actualY)
 	}
 }
+
+func Test_RobotWalk_LWWWWWW(t *testing.T) {
+	walk := "LWWWWWWWWW"
+	expectedX := -4
+	expectedY := 0
+
+	robotwalk.RobotWalk(walk)
+
+	actualX := robotwalk.X
+	actualY := robotwalk.Y
+
+	if expectedX != actualX {
+		t.Errorf("Expect X %v but got %v", expectedX, actualX)
+	}
+	if expectedY != actualY {
+		t.Errorf("Expect Y %v but got %v", expectedY, actualY)
+	}
+}
