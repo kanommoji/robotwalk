@@ -1,7 +1,5 @@
 package robotwalk
 
-import "fmt"
-
 var Position int
 var North = 0
 var East = 1
@@ -94,11 +92,13 @@ func setTable(row int, column int) {
 	Table[row][column] = "0"
 }
 
-func ReadTable() {
+func ReadTable() string {
+	var table string
 	for row := 0; row < 9; row++ {
 		for column := 0; column < 9; column++ {
-			fmt.Print(Table[row][column])
+			table += Table[row][column]
 		}
-		fmt.Println("")
+		table += "\n"
 	}
+	return table
 }
