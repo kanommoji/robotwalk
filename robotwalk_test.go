@@ -658,7 +658,7 @@ func Test_RobotWalk_LWWWWLW(t *testing.T) {
 	}
 }
 
-func Test_RobotWalk_LWWWWWW(t *testing.T) {
+func Test_RobotWalk_LWWWWWW_CannotWalkOutOfTable(t *testing.T) {
 	walk := "LWWWWWWWWW"
 	expectedX := -4
 	expectedY := 0
