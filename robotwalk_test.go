@@ -5,35 +5,35 @@ import (
 	"testing"
 )
 
-func stringSlicesEqual(a, b []string) bool {
-	if len(a) != len(b) {
-		return false
+func Test_SetStartWalking(t *testing.T) {
+	expectedX := 0
+	expectedY := 0
+	expectedRow := 4
+	expectedColumn := 4
+	expectedPosition := robotwalk.North
+
+	robotwalk.SetStartWalking()
+
+	actualX := robotwalk.X
+	actualY := robotwalk.Y
+	actualRow := robotwalk.Row
+	actualColumn := robotwalk.Column
+	actualPosition := robotwalk.Position
+
+	if expectedX != actualX {
+		t.Errorf("Expect X %v but got %v", expectedX, actualX)
 	}
-	for i, v := range a {
-		if v != b[i] {
-			return false
-		}
+	if expectedY != actualY {
+		t.Errorf("Expect Y %v but got %v", expectedY, actualY)
 	}
-	return true
-}
-
-func Test_ReadWalk_Walk_WWLWRWW(t *testing.T) {
-	expected := []string{"W", "W", "L", "W", "R", "W", "W"}
-
-	actual := robotwalk.ReadWalk("WWLWRWW")
-
-	if !stringSlicesEqual(expected, actual) {
-		t.Errorf("Expect true but got %v", stringSlicesEqual(expected, actual))
+	if expectedRow != actualRow {
+		t.Errorf("Expect X %v but got %v", expectedRow, actualRow)
 	}
-}
-
-func Test_ReadWalk_Walk_LWWWWLW(t *testing.T) {
-	expected := []string{"L", "W", "W", "W", "W", "L", "W"}
-
-	actual := robotwalk.ReadWalk("LWWWWLW")
-
-	if !stringSlicesEqual(expected, actual) {
-		t.Errorf("Expect true but got %v", stringSlicesEqual(expected, actual))
+	if expectedColumn != actualColumn {
+		t.Errorf("Expect Y %v but got %v", expectedColumn, actualColumn)
+	}
+	if expectedPosition != actualPosition {
+		t.Errorf("Expect Y %v but got %v", expectedPosition, actualPosition)
 	}
 }
 

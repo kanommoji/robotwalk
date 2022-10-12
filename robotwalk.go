@@ -11,14 +11,73 @@ var Table [9][9]string
 var X int
 var Y int
 
-func ReadWalk(walk string) []string {
-	// var arr []string
-	// for i, c := range walk {
-	// 	arr[i] = string(c)
-	// }
-	return []string{"L", "W", "W", "W", "W", "L", "W"}
+var Row int
+var Column int
 
+func SetStartWalking() {
+	setStartXY()
+	setStartTable()
+	setStartPosition()
 }
+
+func setStartPosition() {
+	Position = North
+}
+
+func setStartXY() {
+	X = 0
+	Y = 0
+}
+
+func setStartTable() {
+	Row = 4
+	Column = 4
+	Table[Row][Column] = "0"
+	for column := 0; column < 9; column++ {
+		for row := 0; row < 9; row++ {
+			Table[row][column] = "*"
+		}
+	}
+}
+
+// func RobotWalk(walk string) {
+// 	for _, c := range walk {
+// 		CalculateRobotWalk(string(c))
+// 	}
+// }
+
+// func CalculateRobotWalk(walk string) {
+// 	if walk != "W" {
+// 		if walk == "L" {
+// 			if Position == North {
+// 				Position = West
+// 			} else {
+// 				Position--
+// 			}
+// 		} else {
+// 			if Position == West {
+// 				Position = North
+// 			} else {
+// 				Position++
+// 			}
+// 		}
+// 	} else {
+// 		if Position == North {
+// 			Y++
+// 		} else if Position == East {
+// 			X++
+// 		} else if Position == South {
+// 			Y--
+// 		} else if Position == West {
+// 			X--
+// 		}
+// 	}
+// }
+
+// func setXY(x int, y int) {
+// 	X = x
+// 	Y = y
+// }
 
 // func SetResult(walkArray string) (int, int) {
 // 	x := 0
