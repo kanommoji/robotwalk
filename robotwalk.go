@@ -27,6 +27,7 @@ func RobotWalk(walk string) {
 	}
 }
 
+// set start position of robot
 func SetStartWalking() {
 	setStartTable()
 	setStartXY()
@@ -42,6 +43,7 @@ func setStartXY() {
 	Y = 0
 }
 
+// set table 2D array and start position of robot
 func setStartTable() {
 	for column := 0; column < 9; column++ {
 		for row := 0; row < 9; row++ {
@@ -53,6 +55,7 @@ func setStartTable() {
 	Table[Row][Column] = "0"
 }
 
+// robot walk next position or change direction
 func CalculateNextPosition(walk string) {
 	if walk != "W" {
 		if walk == "L" {
@@ -86,17 +89,20 @@ func CalculateNextPosition(walk string) {
 	}
 }
 
+// set current position (x,y)
 func setXY(x int, y int) {
 	X = x
 	Y = y
 }
 
+// set walkway robot is 0 in table
 func setTable(row int, column int) {
 	Row = row
 	Column = column
 	Table[row][column] = "0"
 }
 
+// show result the last point of robot and show walkway robot
 func ReadResult() string {
 	return readXYPoint() + "\n" + readTable()
 }
