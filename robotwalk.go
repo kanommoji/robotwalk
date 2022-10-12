@@ -72,68 +72,22 @@ func CalculateNextPosition(walk string) {
 	}
 }
 
-// func RobotWalk(walk string) {
-// 	for _, c := range walk {
-// 		CalculateRobotWalk(string(c))
-// 	}
-// }
+func RobotWalk(walk string) {
+	SetStartWalking()
+	for _, c := range walk {
+		CalculateNextPosition(string(c))
+		setXY(X, Y)
+		setTable(Row, Column)
+	}
+}
 
-// func setXY(x int, y int) {
-// 	X = x
-// 	Y = y
-// }
+func setXY(x int, y int) {
+	X = x
+	Y = y
+}
 
-// func SetResult(walkArray string) (int, int) {
-// 	x := 0
-// 	y := 0
-// 	position := North
-// 	setTable()
-
-// 	for _, c := range walkArray {
-// 		x, y, position = CalculateNextPosition(x, y, position, string(c))
-// 		SetPositionRobotWalk(x, y)
-// 	}
-// 	return x, y
-// }
-
-// func CalculateNextPosition(x int, y int, position int, walk string) (int, int, int) {
-// 	if walk != "W" {
-// 		if walk == "L" {
-// 			if position == North {
-// 				position = West
-// 			} else {
-// 				position--
-// 			}
-// 		} else {
-// 			if position == West {
-// 				position = North
-// 			} else {
-// 				position++
-// 			}
-// 		}
-// 	} else {
-// 		if position == North {
-// 			y++
-// 		} else if position == East {
-// 			x++
-// 		} else if position == South {
-// 			y--
-// 		} else if position == West {
-// 			x--
-// 		}
-// 	}
-// 	return x, y, position
-// }
-
-// func SetPositionRobotWalk(x int, y int) {
-// 	Table[y+4][x+4] = "0"
-// }
-
-// func setTable() {
-// 	Table[4][4] = "0"
-// 	for i := 0; i < 9; i++ {
-// 		for j := 0; j < 9; j++ {
-// 			Table[j][i] = "*"
-// 		}
-// 	}
-// }
+func setTable(row int, column int) {
+	Row = row
+	Column = column
+	Table[row][column] = "0"
+}

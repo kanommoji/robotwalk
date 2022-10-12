@@ -583,58 +583,38 @@ func Test_CalculateNextPosition_X_Minus_4_Y_0_Row_4_Column_0_Position_South_Walk
 	}
 }
 
-// func Test_SetPositionRobotWalk_X_1_Y_1_Should_be_Table55_0(t *testing.T) {
-// 	x := 1
-// 	y := 1
+func Test_RobotWalk_WWLWRWW(t *testing.T) {
+	walk := "WWLWRWW"
+	expectedX := -1
+	expectedY := 4
 
-// 	expected := "0"
+	robotwalk.RobotWalk(walk)
 
-// 	robotwalk.SetPositionRobotWalk(x, y)
-// 	actual := robotwalk.Table[5][5]
+	actualX := robotwalk.X
+	actualY := robotwalk.Y
 
-// 	if expected != actual {
-// 		t.Errorf("Expect X %v but got %v", expected, actual)
-// 	}
-// }
+	if expectedX != actualX {
+		t.Errorf("Expect X %v but got %v", expectedX, actualX)
+	}
+	if expectedY != actualY {
+		t.Errorf("Expect Y %v but got %v", expectedY, actualY)
+	}
+}
 
-// func Test_SetPositionRobotWalk_X_1_Y_1_Should_be_Table45_null(t *testing.T) {
-// 	x := 1
-// 	y := 1
+func Test_RobotWalk_LWWWWLW(t *testing.T) {
+	walk := "LWWWWLW"
+	expectedX := -4
+	expectedY := -1
 
-// 	expected := ""
+	robotwalk.RobotWalk(walk)
 
-// 	robotwalk.SetPositionRobotWalk(x, y)
-// 	actual := robotwalk.Table[3][4]
+	actualX := robotwalk.X
+	actualY := robotwalk.Y
 
-// 	if expected != actual {
-// 		t.Errorf("Expect X %v but got %v", expected, actual)
-// 	}
-// }
-
-// func Test_SetResult_WalkArray_WWLWRWW_Should_Be_X_Minus1_Y_4(t *testing.T) {
-// 	expectedX := -1
-// 	expectedY := 4
-
-// 	actualX, actualY := robotwalk.SetResult("WWLWRWW")
-
-// 	if expectedX != actualX {
-// 		t.Errorf("Expect X %v but got %v", expectedX, actualX)
-// 	}
-// 	if expectedY != actualY {
-// 		t.Errorf("Expect Y %v but got %v", expectedY, actualY)
-// 	}
-// }
-
-// func Test_SetResult_WalkArray_LWWWWLW_Should_Be_X_Minus4_Y_Minus1(t *testing.T) {
-// 	expectedX := -4
-// 	expectedY := -1
-
-// 	actualX, actualY := robotwalk.SetResult("LWWWWLW")
-
-// 	if expectedX != actualX {
-// 		t.Errorf("Expect X %v but got %v", expectedX, actualX)
-// 	}
-// 	if expectedY != actualY {
-// 		t.Errorf("Expect Y %v but got %v", expectedY, actualY)
-// 	}
-// }
+	if expectedX != actualX {
+		t.Errorf("Expect X %v but got %v", expectedX, actualX)
+	}
+	if expectedY != actualY {
+		t.Errorf("Expect Y %v but got %v", expectedY, actualY)
+	}
+}
