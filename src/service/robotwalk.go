@@ -35,7 +35,7 @@ func RobotWalk(walks string) (string, error) {
 	myRobot := InitRobot()
 	var err error
 	for _, walk := range walks {
-		myRobot, err = CalculateNextDirection(string(walk), myRobot)
+		myRobot, err = CalculateNextPosition(string(walk), myRobot)
 		if err != nil {
 			return "", err
 		}
@@ -57,7 +57,7 @@ func InitRobot() Robot {
 	return robot
 }
 
-func CalculateNextDirection(walk string, robot Robot) (Robot, error) {
+func CalculateNextPosition(walk string, robot Robot) (Robot, error) {
 	if walk != "W" {
 		if walk == "L" {
 			if robot.Direction == North {

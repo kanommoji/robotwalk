@@ -94,7 +94,7 @@ func Test_CalculateNextPosition_Walk_W_Direction_North_OutOfTable(t *testing.T) 
 		Table:     robotwalk.Table{Row: 0, Column: 0},
 	}
 
-	actual, _ := robotwalk.CalculateNextDirection(walk, robot)
+	actual, _ := robotwalk.CalculateNextPosition(walk, robot)
 
 	if expected != actual {
 		t.Errorf("Expect %v but got %v", expected, actual)
@@ -114,7 +114,7 @@ func Test_CalculateNextPosition_Walk_W_Direction_North(t *testing.T) {
 		Table:     robotwalk.Table{Row: 3, Column: 4},
 	}
 
-	actual, _ := robotwalk.CalculateNextDirection(walk, robot)
+	actual, _ := robotwalk.CalculateNextPosition(walk, robot)
 
 	if expected != actual {
 		t.Errorf("Expect %v but got %v", expected, actual)
@@ -134,7 +134,7 @@ func Test_CalculateNextPosition_Walk_W_Direction_East(t *testing.T) {
 		Table:     robotwalk.Table{Row: 4, Column: 5},
 	}
 
-	actual, _ := robotwalk.CalculateNextDirection(walk, robot)
+	actual, _ := robotwalk.CalculateNextPosition(walk, robot)
 
 	if expected != actual {
 		t.Errorf("Expect %v but got %v", expected, actual)
@@ -154,7 +154,7 @@ func Test_CalculateNextPosition_Walk_W_Direction_South(t *testing.T) {
 		Table:     robotwalk.Table{Row: 5, Column: 4},
 	}
 
-	actual, _ := robotwalk.CalculateNextDirection(walk, robot)
+	actual, _ := robotwalk.CalculateNextPosition(walk, robot)
 
 	if expected != actual {
 		t.Errorf("Expect %v but got %v", expected, actual)
@@ -174,7 +174,7 @@ func Test_CalculateNextPosition_Walk_W_Direction_West(t *testing.T) {
 		Table:     robotwalk.Table{Row: 4, Column: 3},
 	}
 
-	actual, _ := robotwalk.CalculateNextDirection(walk, robot)
+	actual, _ := robotwalk.CalculateNextPosition(walk, robot)
 
 	if expected != actual {
 		t.Errorf("Expect %v but got %v", expected, actual)
@@ -186,7 +186,7 @@ func Test_CalculateNextPosition_Walk_L_Change_Direction_North_To_West(t *testing
 	robot := robotwalk.Robot{Direction: robotwalk.North}
 	expected := robotwalk.Robot{Direction: robotwalk.West}
 
-	actual, _ := robotwalk.CalculateNextDirection(walk, robot)
+	actual, _ := robotwalk.CalculateNextPosition(walk, robot)
 
 	if expected != actual {
 		t.Errorf("Expect %v but got %v", expected, actual)
@@ -198,7 +198,7 @@ func Test_CalculateNextPosition_Walk_L_Change_Direction_West_To_South(t *testing
 	robot := robotwalk.Robot{Direction: robotwalk.West}
 	expected := robotwalk.Robot{Direction: robotwalk.South}
 
-	actual, _ := robotwalk.CalculateNextDirection(walk, robot)
+	actual, _ := robotwalk.CalculateNextPosition(walk, robot)
 
 	if expected != actual {
 		t.Errorf("Expect %v but got %v", expected, actual)
@@ -210,7 +210,7 @@ func Test_CalculateNextPosition_Walk_L_Change_Direction_South_North_To_East(t *t
 	robot := robotwalk.Robot{Direction: robotwalk.South}
 	expected := robotwalk.Robot{Direction: robotwalk.East}
 
-	actual, _ := robotwalk.CalculateNextDirection(walk, robot)
+	actual, _ := robotwalk.CalculateNextPosition(walk, robot)
 
 	if expected != actual {
 		t.Errorf("Expect %v but got %v", expected, actual)
@@ -222,7 +222,7 @@ func Test_CalculateNextPosition_Walk_L_Change_Direction_East_To_North(t *testing
 	robot := robotwalk.Robot{Direction: robotwalk.East}
 	expected := robotwalk.Robot{Direction: robotwalk.North}
 
-	actual, _ := robotwalk.CalculateNextDirection(walk, robot)
+	actual, _ := robotwalk.CalculateNextPosition(walk, robot)
 
 	if expected != actual {
 		t.Errorf("Expect %v but got %v", expected, actual)
@@ -234,7 +234,7 @@ func Test_CalculateNextPosition_Walk_R_Change_Direction_North_To_East(t *testing
 	robot := robotwalk.Robot{Direction: robotwalk.North}
 	expected := robotwalk.Robot{Direction: robotwalk.East}
 
-	actual, _ := robotwalk.CalculateNextDirection(walk, robot)
+	actual, _ := robotwalk.CalculateNextPosition(walk, robot)
 
 	if expected != actual {
 		t.Errorf("Expect %v but got %v", expected, actual)
@@ -246,7 +246,7 @@ func Test_CalculateNextPosition_Walk_R_Change_Direction_East_To_South(t *testing
 	robot := robotwalk.Robot{Direction: robotwalk.East}
 	expected := robotwalk.Robot{Direction: robotwalk.South}
 
-	actual, _ := robotwalk.CalculateNextDirection(walk, robot)
+	actual, _ := robotwalk.CalculateNextPosition(walk, robot)
 
 	if expected != actual {
 		t.Errorf("Expect %v but got %v", expected, actual)
@@ -258,7 +258,7 @@ func Test_CalculateNextPosition_Walk_R_Change_Direction_South_To_West(t *testing
 	robot := robotwalk.Robot{Direction: robotwalk.South}
 	expected := robotwalk.Robot{Direction: robotwalk.West}
 
-	actual, _ := robotwalk.CalculateNextDirection(walk, robot)
+	actual, _ := robotwalk.CalculateNextPosition(walk, robot)
 
 	if expected != actual {
 		t.Errorf("Expect %v but got %v", expected, actual)
@@ -270,7 +270,7 @@ func Test_CalculateNextPosition_Walk_R_Change_Direction_West_To_North(t *testing
 	robot := robotwalk.Robot{Direction: robotwalk.West}
 	expected := robotwalk.Robot{Direction: robotwalk.North}
 
-	actual, _ := robotwalk.CalculateNextDirection(walk, robot)
+	actual, _ := robotwalk.CalculateNextPosition(walk, robot)
 
 	if expected != actual {
 		t.Errorf("Expect %v but got %v", expected, actual)
