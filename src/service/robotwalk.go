@@ -1,15 +1,18 @@
 package robotwalk
 
 import (
+	"errors"
 	"strconv"
 )
 
-type Robot struct {
-	Direction    int
-	WalkingTable [9][9]string
-	Position     Position
-	Table        Table
-}
+type Direction int
+
+const (
+	North Direction = iota
+	East
+	South
+	West
+)
 
 type Position struct {
 	X int
@@ -21,99 +24,96 @@ type Table struct {
 	Column int
 }
 
-var MyRobot Robot
-var North = 0
-var East = 1
-var South = 2
-var West = 3
+type Robot struct {
+	Direction    Direction
+	WalkingTable [9][9]string
+	Position     Position
+	Table        Table
+}
 
-func RobotWalk(walk string) string {
-	InitWalking()
-	for _, c := range walk {
-		CalculateNextDirection(string(c))
-		setTable(MyRobot.Table.Row, MyRobot.Table.Column)
+func RobotWalk(walks string) (string, error) {
+	myRobot := InitRobot()
+	var err error
+	for _, walk := range walks {
+		myRobot, err = CalculateNextDirection(string(walk), myRobot)
+		if err != nil {
+			return "", err
+		}
+		myRobot = setWalkingTable(myRobot)
 	}
-	return readResult()
+	return readResult(myRobot), err
 }
 
-func InitWalking() {
-	initTable()
-	initPosition()
-	initDirection()
-}
-
-func initDirection() {
-	MyRobot.Direction = North
-}
-
-func initPosition() {
-	MyRobot.Position.X = 0
-	MyRobot.Position.Y = 0
-}
-
-func initTable() {
+func InitRobot() Robot {
+	var robot Robot
 	for column := 0; column < 9; column++ {
 		for row := 0; row < 9; row++ {
-			MyRobot.WalkingTable[row][column] = "*"
+			robot.WalkingTable[row][column] = "*"
 		}
 	}
-	MyRobot.Table.Row = 4
-	MyRobot.Table.Column = 4
-	MyRobot.WalkingTable[MyRobot.Table.Row][MyRobot.Table.Column] = "0"
+	robot.Table.Row = 4
+	robot.Table.Column = 4
+	robot.WalkingTable[robot.Table.Row][robot.Table.Column] = "0"
+	return robot
 }
 
-func CalculateNextDirection(walk string) {
+func CalculateNextDirection(walk string, robot Robot) (Robot, error) {
 	if walk != "W" {
 		if walk == "L" {
-			if MyRobot.Direction == North {
-				MyRobot.Direction = West
+			if robot.Direction == North {
+				robot.Direction = West
 			} else {
-				MyRobot.Direction--
+				robot.Direction--
 			}
 		} else {
-			if MyRobot.Direction == West {
-				MyRobot.Direction = North
+			if robot.Direction == West {
+				robot.Direction = North
 			} else {
-				MyRobot.Direction++
+				robot.Direction++
 			}
 		}
 	} else {
-		if MyRobot.Direction == North && MyRobot.Position.Y < 4 {
-			MyRobot.Position.Y++
-			MyRobot.Table.Row--
-		} else if MyRobot.Direction == East && MyRobot.Position.X < 4 {
-			MyRobot.Position.X++
-			MyRobot.Table.Column++
-		} else if MyRobot.Direction == South && MyRobot.Position.Y > -4 {
-			MyRobot.Position.Y--
-			MyRobot.Table.Row++
-		} else if MyRobot.Direction == West && MyRobot.Position.X > -4 {
-			MyRobot.Position.X--
-			MyRobot.Table.Column--
+		if robot.Direction == North {
+			robot.Position.Y++
+			robot.Table.Row--
+		} else if robot.Direction == East {
+			robot.Position.X++
+			robot.Table.Column++
+		} else if robot.Direction == South {
+			robot.Position.Y--
+			robot.Table.Row++
+		} else if robot.Direction == West {
+			robot.Position.X--
+			robot.Table.Column--
 		}
-
+		err := validateInMyTable(robot.Position.X, robot.Position.Y)
+		if err != nil {
+			return Robot{}, err
+		}
 	}
+	return robot, nil
 }
 
-func setTable(row int, column int) {
-	MyRobot.WalkingTable[row][column] = "0"
+func setWalkingTable(robot Robot) Robot {
+	robot.WalkingTable[robot.Table.Row][robot.Table.Column] = "0"
+	return robot
 }
 
-func readResult() string {
-	return readXYPoint() + "\n" + readTable()
-}
-
-func readXYPoint() string {
-	return "Position : (" + strconv.Itoa(MyRobot.Position.X) + "," + strconv.Itoa(MyRobot.Position.Y) + ")"
-}
-
-func readTable() string {
+func readResult(robot Robot) string {
+	position := "Position : (" + strconv.Itoa(robot.Position.X) + "," + strconv.Itoa(robot.Position.Y) + ")"
 	var table string
 	for row := 0; row < 9; row++ {
 		for column := 0; column < 9; column++ {
-			table += MyRobot.WalkingTable[row][column]
+			table += robot.WalkingTable[row][column]
 		}
 		table += "\n"
 	}
-	return table
+	return position + "\n" + table
+}
+
+func validateInMyTable(x int, y int) error {
+	if x > 4 || x < -4 || y > 4 || y < -4 {
+		return errors.New("can't walk")
+	}
+	return nil
 }
