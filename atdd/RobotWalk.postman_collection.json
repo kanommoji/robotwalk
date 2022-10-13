@@ -38,14 +38,14 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080?walk=LWWWWLW",
+					"raw": "localhost:8080?walks=LWWWWLW",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"query": [
 						{
-							"key": "walk",
+							"key": "walks",
 							"value": "LWWWWLW"
 						}
 					]
@@ -85,15 +85,53 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080?walk=WWLWRWW",
+					"raw": "localhost:8080?walks=WWLWRWW",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"query": [
 						{
-							"key": "walk",
+							"key": "walks",
 							"value": "WWLWRWW"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Walk WWWWW can't walk",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Body is correct\", function () {",
+							"    pm.response.to.have.body(\"can't walk\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080?walks=WWWWW",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"query": [
+						{
+							"key": "walks",
+							"value": "WWWWW"
 						}
 					]
 				}
