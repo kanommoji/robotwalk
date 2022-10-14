@@ -41,7 +41,7 @@ func RobotWalk(walks string) (string, error) {
 		}
 		myRobot.WalkingTable = SetWalkingTable(myRobot.WalkingTable, myRobot.Table)
 	}
-	return ReadResult(myRobot), err
+	return readResult(myRobot), err
 }
 
 func InitRobot() Robot {
@@ -51,8 +51,7 @@ func InitRobot() Robot {
 			robot.WalkingTable[row][column] = "*"
 		}
 	}
-	robot.Table.Row = 4
-	robot.Table.Column = 4
+	robot.Table = Table{Row: 4, Column: 4}
 	robot.WalkingTable[robot.Table.Row][robot.Table.Column] = "0"
 	return robot
 }
@@ -62,7 +61,7 @@ func CalculateNextPosition(walk string, robot Robot) (Robot, error) {
 		robot.Direction = ChangeDirection(walk, robot.Direction)
 	} else {
 		robot.Position, robot.Table = ChangePosition(robot.Direction, robot.Position, robot.Table)
-		err := ValidateInMyTable(robot.Position.X, robot.Position.Y)
+		err := ValidateInMyTable(robot.Position)
 		if err != nil {
 			return Robot{}, err
 		}
@@ -97,7 +96,7 @@ func ChangePosition(direction Direction, position Position, table Table) (Positi
 	} else if direction == South {
 		position.Y--
 		table.Row++
-	} else if direction == West {
+	} else {
 		position.X--
 		table.Column--
 	}
@@ -109,7 +108,7 @@ func SetWalkingTable(walkingTable [9][9]string, table Table) [9][9]string {
 	return walkingTable
 }
 
-func ReadResult(robot Robot) string {
+func readResult(robot Robot) string {
 	position := "Position : (" + strconv.Itoa(robot.Position.X) + "," + strconv.Itoa(robot.Position.Y) + ")"
 	var table string
 	for row := 0; row < 9; row++ {
@@ -121,8 +120,8 @@ func ReadResult(robot Robot) string {
 	return position + "\n" + table
 }
 
-func ValidateInMyTable(x int, y int) error {
-	if x > 4 || x < -4 || y > 4 || y < -4 {
+func ValidateInMyTable(position Position) error {
+	if position.X > 4 || position.X < -4 || position.Y > 4 || position.Y < -4 {
 		return errors.New("can't walk")
 	}
 	return nil
