@@ -59,19 +59,7 @@ func InitRobot() Robot {
 
 func CalculateNextPosition(walk string, robot Robot) (Robot, error) {
 	if walk != "W" {
-		if walk == "L" {
-			if robot.Direction == North {
-				robot.Direction = West
-			} else {
-				robot.Direction--
-			}
-		} else {
-			if robot.Direction == West {
-				robot.Direction = North
-			} else {
-				robot.Direction++
-			}
-		}
+		robot.Direction = ChangeDirection(walk, robot.Direction)
 	} else {
 		if robot.Direction == North {
 			robot.Position.Y++
@@ -92,6 +80,23 @@ func CalculateNextPosition(walk string, robot Robot) (Robot, error) {
 		}
 	}
 	return robot, nil
+}
+
+func ChangeDirection(walk string, direction Direction) Direction {
+	if walk == "L" {
+		if direction == North {
+			direction = West
+		} else {
+			direction--
+		}
+	} else {
+		if direction == West {
+			direction = North
+		} else {
+			direction++
+		}
+	}
+	return direction
 }
 
 func setWalkingTable(robot Robot) Robot {
