@@ -61,20 +61,8 @@ func CalculateNextPosition(walk string, robot Robot) (Robot, error) {
 	if walk != "W" {
 		robot.Direction = ChangeDirection(walk, robot.Direction)
 	} else {
-		if robot.Direction == North {
-			robot.Position.Y++
-			robot.Table.Row--
-		} else if robot.Direction == East {
-			robot.Position.X++
-			robot.Table.Column++
-		} else if robot.Direction == South {
-			robot.Position.Y--
-			robot.Table.Row++
-		} else if robot.Direction == West {
-			robot.Position.X--
-			robot.Table.Column--
-		}
-		err := validateInMyTable(robot.Position.X, robot.Position.Y)
+		robot.Position.X, robot.Position.Y, robot.Table.Row, robot.Table.Column = ChangePosition(robot.Direction, robot.Position.X, robot.Position.Y, robot.Table.Row, robot.Table.Column)
+		err := ValidateInMyTable(robot.Position.X, robot.Position.Y)
 		if err != nil {
 			return Robot{}, err
 		}
@@ -99,6 +87,23 @@ func ChangeDirection(walk string, direction Direction) Direction {
 	return direction
 }
 
+func ChangePosition(direction Direction, x int, y int, row int, column int) (int, int, int, int) {
+	if direction == North {
+		y++
+		row--
+	} else if direction == East {
+		x++
+		column++
+	} else if direction == South {
+		y--
+		row++
+	} else if direction == West {
+		x--
+		column--
+	}
+	return x, y, row, column
+}
+
 func setWalkingTable(robot Robot) Robot {
 	robot.WalkingTable[robot.Table.Row][robot.Table.Column] = "0"
 	return robot
@@ -116,7 +121,7 @@ func readResult(robot Robot) string {
 	return position + "\n" + table
 }
 
-func validateInMyTable(x int, y int) error {
+func ValidateInMyTable(x int, y int) error {
 	if x > 4 || x < -4 || y > 4 || y < -4 {
 		return errors.New("can't walk")
 	}
