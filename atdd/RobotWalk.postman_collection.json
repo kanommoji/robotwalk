@@ -38,14 +38,14 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080?walks=LWWWWLW",
+					"raw": "localhost:8080?walklist=LWWWWLW",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"query": [
 						{
-							"key": "walks",
+							"key": "walklist",
 							"value": "LWWWWLW"
 						}
 					]
@@ -85,14 +85,14 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080?walks=WWLWRWW",
+					"raw": "localhost:8080?walklist=WWLWRWW",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"query": [
 						{
-							"key": "walks",
+							"key": "walklist",
 							"value": "WWLWRWW"
 						}
 					]
@@ -123,14 +123,14 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080?walks=WWWWW",
+					"raw": "localhost:8080?walklist=WWWWW",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"query": [
 						{
-							"key": "walks",
+							"key": "walklist",
 							"value": "WWWWW"
 						}
 					]
