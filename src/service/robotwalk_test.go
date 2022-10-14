@@ -414,3 +414,118 @@ func Test_SetWalkingTable(t *testing.T) {
 		t.Errorf("Expect %v but got %v", expected, actual)
 	}
 }
+
+func Test_ValidateInMyTable_X_5(t *testing.T) {
+	x := 5
+	y := 0
+	expected := errors.New("can't walk")
+
+	actual := robotwalk.ValidateInMyTable(x, y)
+
+	if actual == nil {
+		t.Errorf("Expect %v but got %v", expected, actual)
+	}
+}
+
+func Test_ValidateInMyTable_X_minus_5(t *testing.T) {
+	x := -5
+	y := 0
+	expected := errors.New("can't walk")
+
+	actual := robotwalk.ValidateInMyTable(x, y)
+
+	if actual == nil {
+		t.Errorf("Expect %v but got %v", expected, actual)
+	}
+}
+
+func Test_ValidateInMyTable_Y_5(t *testing.T) {
+	x := 0
+	y := 5
+	expected := errors.New("can't walk")
+
+	actual := robotwalk.ValidateInMyTable(x, y)
+
+	if actual == nil {
+		t.Errorf("Expect %v but got %v", expected, actual)
+	}
+}
+
+func Test_ValidateInMyTable_Y_minus_5(t *testing.T) {
+	x := 0
+	y := -5
+	expected := errors.New("can't walk")
+
+	actual := robotwalk.ValidateInMyTable(x, y)
+
+	if actual == nil {
+		t.Errorf("Expect %v but got %v", expected, actual)
+	}
+}
+
+func Test_ValidateInMyTable_X_4_Y_minus_5(t *testing.T) {
+	x := 4
+	y := -5
+	expected := errors.New("can't walk")
+
+	actual := robotwalk.ValidateInMyTable(x, y)
+
+	if actual == nil {
+		t.Errorf("Expect %v but got %v", expected, actual)
+	}
+}
+
+func Test_ValidateInMyTable_X_4(t *testing.T) {
+	x := 4
+	y := 0
+
+	actual := robotwalk.ValidateInMyTable(x, y)
+
+	if actual != nil {
+		t.Errorf("Expect nil but got %v", actual)
+	}
+}
+
+func Test_ValidateInMyTable_X_minus_4(t *testing.T) {
+	x := -4
+	y := 0
+
+	actual := robotwalk.ValidateInMyTable(x, y)
+
+	if actual != nil {
+		t.Errorf("Expect nil but got %v", actual)
+	}
+}
+
+func Test_ValidateInMyTable_Y_4(t *testing.T) {
+	x := 0
+	y := 4
+
+	actual := robotwalk.ValidateInMyTable(x, y)
+
+	if actual != nil {
+		t.Errorf("Expect nil but got %v", actual)
+	}
+}
+
+func Test_ValidateInMyTable_Y_minus_4(t *testing.T) {
+	x := 0
+	y := -4
+
+	actual := robotwalk.ValidateInMyTable(x, y)
+
+	if actual != nil {
+		t.Errorf("Expect nil but got %v", actual)
+	}
+}
+
+func Test_ValidateInMyTable_X_4_Y_4(t *testing.T) {
+	x := 4
+	y := 4
+
+	actual := robotwalk.ValidateInMyTable(x, y)
+
+	if actual != nil {
+		t.Errorf("Expect nil but got %v", actual)
+	}
+}
