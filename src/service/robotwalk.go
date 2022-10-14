@@ -39,9 +39,9 @@ func RobotWalk(walks string) (string, error) {
 		if err != nil {
 			return "", err
 		}
-		myRobot = setWalkingTable(myRobot)
+		myRobot.WalkingTable = SetWalkingTable(myRobot.WalkingTable, myRobot.Table)
 	}
-	return readResult(myRobot), err
+	return ReadResult(myRobot), err
 }
 
 func InitRobot() Robot {
@@ -104,12 +104,12 @@ func ChangePosition(direction Direction, x int, y int, row int, column int) (int
 	return x, y, row, column
 }
 
-func setWalkingTable(robot Robot) Robot {
-	robot.WalkingTable[robot.Table.Row][robot.Table.Column] = "0"
-	return robot
+func SetWalkingTable(walkingTable [9][9]string, table Table) [9][9]string {
+	walkingTable[table.Row][table.Column] = "0"
+	return walkingTable
 }
 
-func readResult(robot Robot) string {
+func ReadResult(robot Robot) string {
 	position := "Position : (" + strconv.Itoa(robot.Position.X) + "," + strconv.Itoa(robot.Position.Y) + ")"
 	var table string
 	for row := 0; row < 9; row++ {
