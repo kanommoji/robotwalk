@@ -279,109 +279,69 @@ func Test_ChangeDirection_Walk_R_Change_Direction_West_To_North(t *testing.T) {
 
 func Test_ChangePosition_Direction_North(t *testing.T) {
 	direction := robotwalk.North
-	x := 0
-	y := 0
-	row := 4
-	column := 4
-	expectedX := 0
-	expectedY := 1
-	expectedRow := 3
-	expectedColumn := 4
+	position := robotwalk.Position{X: 0, Y: 0}
+	table := robotwalk.Table{Row: 4, Column: 4}
+	expectedPosition := robotwalk.Position{X: 0, Y: 1}
+	expectedTable := robotwalk.Table{Row: 3, Column: 4}
 
-	actualX, actualY, actualRow, actualColumn := robotwalk.ChangePosition(direction, x, y, row, column)
+	actualPosition, actualTable := robotwalk.ChangePosition(direction, position, table)
 
-	if expectedX != actualX {
-		t.Errorf("Expect X %v but got %v", expectedX, actualX)
+	if expectedPosition != actualPosition {
+		t.Errorf("Expect X %v but got %v", expectedPosition, actualPosition)
 	}
-	if expectedY != actualY {
-		t.Errorf("Expect Y %v but got %v", expectedY, actualY)
-	}
-	if expectedRow != actualRow {
-		t.Errorf("Expect Row %v but got %v", expectedRow, actualRow)
-	}
-	if expectedColumn != actualColumn {
-		t.Errorf("Expect Column %v but got %v", expectedColumn, actualColumn)
+	if expectedTable != actualTable {
+		t.Errorf("Expect Y %v but got %v", expectedTable, actualTable)
 	}
 }
 
 func Test_ChangePosition_Direction_South(t *testing.T) {
 	direction := robotwalk.South
-	x := 0
-	y := 0
-	row := 4
-	column := 4
-	expectedX := 0
-	expectedY := -1
-	expectedRow := 5
-	expectedColumn := 4
+	position := robotwalk.Position{X: 0, Y: 0}
+	table := robotwalk.Table{Row: 4, Column: 4}
+	expectedPosition := robotwalk.Position{X: 0, Y: -1}
+	expectedTable := robotwalk.Table{Row: 5, Column: 4}
 
-	actualX, actualY, actualRow, actualColumn := robotwalk.ChangePosition(direction, x, y, row, column)
+	actualPosition, actualTable := robotwalk.ChangePosition(direction, position, table)
 
-	if expectedX != actualX {
-		t.Errorf("Expect X %v but got %v", expectedX, actualX)
+	if expectedPosition != actualPosition {
+		t.Errorf("Expect X %v but got %v", expectedPosition, actualPosition)
 	}
-	if expectedY != actualY {
-		t.Errorf("Expect Y %v but got %v", expectedY, actualY)
-	}
-	if expectedRow != actualRow {
-		t.Errorf("Expect Row %v but got %v", expectedRow, actualRow)
-	}
-	if expectedColumn != actualColumn {
-		t.Errorf("Expect Column %v but got %v", expectedColumn, actualColumn)
+	if expectedTable != actualTable {
+		t.Errorf("Expect Y %v but got %v", expectedTable, actualTable)
 	}
 }
 
 func Test_ChangePosition_Direction_East(t *testing.T) {
 	direction := robotwalk.East
-	x := 0
-	y := 0
-	row := 4
-	column := 4
-	expectedX := 1
-	expectedY := 0
-	expectedRow := 4
-	expectedColumn := 5
+	position := robotwalk.Position{X: 0, Y: 0}
+	table := robotwalk.Table{Row: 4, Column: 4}
+	expectedPosition := robotwalk.Position{X: 1, Y: 0}
+	expectedTable := robotwalk.Table{Row: 4, Column: 5}
 
-	actualX, actualY, actualRow, actualColumn := robotwalk.ChangePosition(direction, x, y, row, column)
+	actualPosition, actualTable := robotwalk.ChangePosition(direction, position, table)
 
-	if expectedX != actualX {
-		t.Errorf("Expect X %v but got %v", expectedX, actualX)
+	if expectedPosition != actualPosition {
+		t.Errorf("Expect X %v but got %v", expectedPosition, actualPosition)
 	}
-	if expectedY != actualY {
-		t.Errorf("Expect Y %v but got %v", expectedY, actualY)
-	}
-	if expectedRow != actualRow {
-		t.Errorf("Expect Row %v but got %v", expectedRow, actualRow)
-	}
-	if expectedColumn != actualColumn {
-		t.Errorf("Expect Column %v but got %v", expectedColumn, actualColumn)
+	if expectedTable != actualTable {
+		t.Errorf("Expect Y %v but got %v", expectedTable, actualTable)
 	}
 }
 
 func Test_ChangePosition_Direction_West(t *testing.T) {
 	direction := robotwalk.West
-	x := 0
-	y := 0
-	row := 4
-	column := 4
-	expectedX := -1
-	expectedY := 0
-	expectedRow := 4
-	expectedColumn := 3
+	position := robotwalk.Position{X: 0, Y: 0}
+	table := robotwalk.Table{Row: 4, Column: 4}
+	expectedPosition := robotwalk.Position{X: -1, Y: 0}
+	expectedTable := robotwalk.Table{Row: 4, Column: 3}
 
-	actualX, actualY, actualRow, actualColumn := robotwalk.ChangePosition(direction, x, y, row, column)
+	actualPosition, actualTable := robotwalk.ChangePosition(direction, position, table)
 
-	if expectedX != actualX {
-		t.Errorf("Expect X %v but got %v", expectedX, actualX)
+	if expectedPosition != actualPosition {
+		t.Errorf("Expect X %v but got %v", expectedPosition, actualPosition)
 	}
-	if expectedY != actualY {
-		t.Errorf("Expect Y %v but got %v", expectedY, actualY)
-	}
-	if expectedRow != actualRow {
-		t.Errorf("Expect Row %v but got %v", expectedRow, actualRow)
-	}
-	if expectedColumn != actualColumn {
-		t.Errorf("Expect Column %v but got %v", expectedColumn, actualColumn)
+	if expectedTable != actualTable {
+		t.Errorf("Expect Y %v but got %v", expectedTable, actualTable)
 	}
 }
 

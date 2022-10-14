@@ -61,7 +61,7 @@ func CalculateNextPosition(walk string, robot Robot) (Robot, error) {
 	if walk != "W" {
 		robot.Direction = ChangeDirection(walk, robot.Direction)
 	} else {
-		robot.Position.X, robot.Position.Y, robot.Table.Row, robot.Table.Column = ChangePosition(robot.Direction, robot.Position.X, robot.Position.Y, robot.Table.Row, robot.Table.Column)
+		robot.Position, robot.Table = ChangePosition(robot.Direction, robot.Position, robot.Table)
 		err := ValidateInMyTable(robot.Position.X, robot.Position.Y)
 		if err != nil {
 			return Robot{}, err
@@ -87,21 +87,21 @@ func ChangeDirection(walk string, direction Direction) Direction {
 	return direction
 }
 
-func ChangePosition(direction Direction, x int, y int, row int, column int) (int, int, int, int) {
+func ChangePosition(direction Direction, position Position, table Table) (Position, Table) {
 	if direction == North {
-		y++
-		row--
+		position.Y++
+		table.Row--
 	} else if direction == East {
-		x++
-		column++
+		position.X++
+		table.Column++
 	} else if direction == South {
-		y--
-		row++
+		position.Y--
+		table.Row++
 	} else if direction == West {
-		x--
-		column--
+		position.X--
+		table.Column--
 	}
-	return x, y, row, column
+	return position, table
 }
 
 func SetWalkingTable(walkingTable [9][9]string, table Table) [9][9]string {
