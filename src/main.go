@@ -7,7 +7,7 @@ import (
 
 func main() {
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		walks := r.URL.Query().Get("walklist")
+		walks := r.URL.Query().Get("walks")
 		w.Header().Set("Content-Type", "application/text")
 		walkig, err := robotwalk.RobotWalk(walks)
 		if err != nil {
